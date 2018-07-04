@@ -1,11 +1,11 @@
 ## Elasticsearch实践(3)-api分页查询
 elasticsearch系列：
 
-[Elasticsearch实践(1)-搭建及IK中文分词](https://wonderomg.github.io/2018/05/15/Elasticsearch%E5%AE%9E%E8%B7%B5(1)-%E6%90%AD%E5%BB%BA%E5%8F%8AIK%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/)
+[Elasticsearch实践(1)-搭建及IK中文分词](https://wonderomg.github.io/2018/05/15/Elasticsearch%E5%AE%9E%E8%B7%B5%E6%90%AD%E5%BB%BA%E5%8F%8AIK%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/)
 
-[Elasticsearch实践(2)-索引及索引别名alias](https://wonderomg.github.io/2018/05/16/Elasticsearch%E5%AE%9E%E8%B7%B5(2)-%E7%B4%A2%E5%BC%95%E5%8F%8A%E7%B4%A2%E5%BC%95%E5%88%AB%E5%90%8Dalias/)
+[Elasticsearch实践(2)-索引及索引别名alias](https://wonderomg.github.io/2018/05/16/Elasticsearch%E5%AE%9E%E8%B7%B5%E7%B4%A2%E5%BC%95%E5%8F%8A%E7%B4%A2%E5%BC%95%E5%88%AB%E5%90%8Dalias/)
 
-[Elasticsearch实践(3)-api分页查询](https://wonderomg.github.io/)
+[Elasticsearch实践(3)-api分页查询](https://wonderomg.github.io/2018/05/17/Elasticsearch%E5%AE%9E%E8%B7%B5api%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/)
 
 es分页有两种，from size浅分页和scroll深分页，这里对这两种分页都做了实现，使用的是es的java api。from size类似于mysql的limit分页，from偏移，默认为0，size为返回的结果数量，默认为10。在数据量不大的情况下一般会使用from size，数据量大的时候效率比较低，而且很费内存，每次会把from*size条记录全部加载到内存中，对结果返回前进行全局排序，然后丢弃掉范围外的结果，重复这样的操作会导致内存占用过大而使es挂掉，并且受数据条数限制，10000条，需修改索引限制。🤔
 
