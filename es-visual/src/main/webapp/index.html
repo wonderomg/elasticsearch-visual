@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>ES-Tests</h2>
+<div>
+    <h3>ES-SearchFromSize</h3>
+    <input id="keyword" placeholder="搜索关键词">
+    排序
+    <select id="priceSort">
+        <option value=""></option>
+        <option value="desc">价格降序</option>
+        <option value="asc">价格升序</option>
+    </select>
+    <button onclick="getOperations()">搜索</button>
+    <br>
+    每页<input id="pageSize" style="width: 50px;" placeholder="条数" value="10">条/
+    总共<input id="totalRows" style="width: 50px;" placeholder="条数">条;
+    第<input id="pageIndex" style="width: 50px;" placeholder="页数" value="1">页/
+    总共<input id="totalPages" style="width: 50px;" placeholder="页数" value="1">页;
+    &nbsp;
+    <button onclick="prePage()">上一页</button>
+    <button onclick="nextPage()">下一页</button>
+    <br>
+    显示第<input id="startIndex" style="width: 50px;" placeholder="记录" value="1">到
+    第<input id="endIndex" style="width: 50px;" placeholder="记录" value="10">条记录;
+    <br>
+    <table>
+        <thead>
+        <th>skuId</th>
+        <th>商品名</th>
+        <th>价格</th>
+        <th>图片</th>
+        </thead>
+        <tbody id="goodsExportList">
+
+        </tbody>
+    </table>
+</div>
+<hr>
+<div>
+    <h3>ES-SearchScroll</h3>
+    <input id="keywordScroll" placeholder="搜索关键词">
+    排序
+    <select id="priceSortScroll">
+        <option value=""></option>
+        <option value="desc">价格降序</option>
+        <option value="asc">价格升序</option>
+    </select>
+    <button onclick="getOperationsByScroll()">搜索</button>
+    <br>
+    每页<input id="pageSizeScroll" style="width: 50px;" placeholder="条数" value="10">条/
+    总共<input id="totalRowsScroll" style="width: 50px;" placeholder="条数">条;
+    第<input id="pageIndexScroll" style="width: 50px;" placeholder="页数" value="1">页/
+    总共<input id="totalPagesScroll" style="width: 50px;" placeholder="页数" value="1">页;
+    &nbsp;
+    <button onclick="prePageScroll()">上一页</button>
+    <button onclick="nextPageScroll()">下一页</button>
+    <br>
+    显示第<input id="startIndexScroll" style="width: 50px;" placeholder="记录" value="1">到
+    第<input id="endIndexScroll" style="width: 50px;" placeholder="记录" value="10">条记录;
+    <br>
+    本次查询的scrollId<input id="scrollId" style="width: 300px;" placeholder="scrollId" name="scrollId">
+    <br>
+    <table>
+        <thead>
+        <th>skuId</th>
+        <th>商品名</th>
+        <th>价格</th>
+        <th>图片</th>
+        </thead>
+        <tbody id="goodsExportListScroll">
+
+        </tbody>
+    </table>
+</div>
+
+
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/data.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+    <property name="LOG_DIR" value="/data/jsp/es-visual/logs" />
+    <property name="LOG_FILE_ROOT" value="stdout.log" />
+    <property name="LOG_FILE_BUSINESS" value="es.log" />
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger[%M] - %msg%n" />
+    <contextName>logback</contextName>
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+             <level>ERROR</level>
+         </filter>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!--按天生成日志-->
+    <appender name="logFile"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/${LOG_FILE_BUSINESS}</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                ${LOG_DIR}/${LOG_FILE_BUSINESS}.%d{yyyy-MM-dd}
+            </FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>${LOG_PATTERN}</Pattern>
+        </layout>
+    </appender>
+
+    <root level="INFO,ERROR">
+        <appender-ref ref="console" />
+        <appender-ref ref="logFile" />
+    </root>
+
+     <logger name="com.sun" level="ERROR" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+</configuration>
